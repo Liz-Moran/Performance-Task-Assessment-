@@ -1,7 +1,7 @@
 #Purpose: To help the user manage their money
 transactions[]
 
-def add_transactions(amount, category):
+def add_transaction(amount, category):
     transactions.append([amount, category])
 
     if amount < 0:
@@ -39,4 +39,9 @@ while True:
     if user_input.lower()=="quit":
         print("Exit program. Bye!")
         break
-
+    if not is_number(user_input):
+        print("Invalid. Try again.")
+        continue
+    amount=float(user_input)
+    category=input("Energy category: ")
+    add_transaction(amount,category)
