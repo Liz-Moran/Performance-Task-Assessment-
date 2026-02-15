@@ -15,7 +15,7 @@ print("Welcome to Mini Manager!")
 print("Where you'll be able to easily track your income and expenses!")
 print("Type 'stop' to stop entering your income and expenses.\n")
 
-while True:
+while True:   #https://www.youtube.com/watch?v=n8NfyU5pX2U&t=249s 
     user_input = input("Enter amount (positive for income, negative for expenses) : ")
     if user_input.lower()=="stop":
         break
