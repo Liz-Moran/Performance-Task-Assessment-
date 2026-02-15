@@ -1,47 +1,39 @@
 #Purpose: To help the user manage their money
-transactions[]
+transactions=[]
 
 def add_transaction(amount, category):
     transactions.append([amount, category])
 
     if amount < 0:
-        print("Expenses saved.")
+        print("Expenses added.")
     else:
-        print("Income saved.")
-
-total = 0
-for x in transactions:
-    total +=x[0]
-
-print(f"Current balence: $",total)
-print("--------------------------")
-
-def is_number(text):
-    allowed = "0123456789.-"
-    for ch in text:
-        if ch not allowed:
-            return False
-        if text.count("-")> 1 or text.count(".") > 1:
-            return False
-        if "-" in text and text.index("-") !=0:
-            return False
-        return True
+        print("Income added.")
 
 print("Mini Manager")
 print("=============")
 print("Welcome to Mini Manager!")
 print("Where you'll be able to easily track your income and expenses!")
-print("Type 'quit' to exit.\n")
-
+print("Type 'stop' to stop entering your income and expenses.\n")
 
 while True:
     user_input = input("Enter amount (positive for income, negative for expenses) : ")
-    if user_input.lower()=="quit":
-        print("Exit program. Bye!")
+    if user_input.lower()=="stop":
         break
-    if not is_number(user_input):
-        print("Invalid. Try again.")
+    try:
+        amount = float(user_input)
+    except:
+        print("Not a number. Please try again.")
         continue
-    amount=float(user_input)
-    category=input("Energy category: ")
-    add_transaction(amount,category)
+
+    category= input("What is this money for?: ")
+    add_transaction(amount, category)
+
+    total = 0
+    for t in transactions:
+        total +=t[0]
+
+    print("Current balence: $", total, "(Category:", category + ")")
+    print("--------------------------")
+
+#Note to self: Add code to make the different categories and their amounts show up seprently 
+
