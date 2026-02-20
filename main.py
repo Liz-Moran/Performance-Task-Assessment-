@@ -24,7 +24,7 @@ while True:
     user_input = input("Enter amount (positive for income, negative for expenses) : ")
     if user_input.lower()=="stop": #Condition to exit loop
         break
-    try:        #Validates that the input is a number                              #https://www.youtube.com/watch?v=n8NfyU5pX2U&t=249s 
+    try:        #Validates that the input is a number 
         amount = float(user_input)
     except:
         print("Not a number. Please try again.")
