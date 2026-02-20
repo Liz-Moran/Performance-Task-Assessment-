@@ -7,6 +7,7 @@ transactions=[]  #This list stores every transaction as [amount, category]
 
 def add_transaction(amount, category):
     transactions.append([amount, category])
+    print(f"Added expense for: {category}")
 
     if amount < 0:
         print("Expenses added.")
@@ -16,7 +17,7 @@ def add_transaction(amount, category):
 print("Mini Manager")
 print("=============")
 print("Welcome to Mini Manager!")
-print("Where you'll be able to easily track your income and expenses!")
+print("Where you can easily track your income and expenses!")
 print("Type 'stop' to stop entering your income and expenses.\n")
 
 #Main loop that keeps asking users for transactions while they type "stop" to end it.
@@ -24,14 +25,14 @@ while True:
     user_input = input("Enter amount (positive for income, negative for expenses) : ")
     if user_input.lower()=="stop": #Condition to exit loop
         break
-    try:        #Validates that the input is a number 
+    try:        #Validates that the input is a number                              s 
         amount = float(user_input)
     except:
         print("Not a number. Please try again.")
         continue   #Sends the user back to the beginning of the loop
         
     #Asks the user what the money was for
-    category= input("What is this money for?: ")
+    category= input("Where did this money come from? or What was this money for?: ")
     add_transaction(amount, category)
 
     # Calculates the running total balance
@@ -47,8 +48,7 @@ while True:
 category_totals = {}
 for amount, category in transactions:
     #Adds the amount to the correct category total
-    category_totals[category] = category_totals.get(category, 0)
-+ amount
+    category_totals[category] = category_totals.get(category, 0) + amount
 
 #Prints the category summary for the user
 print("\nCategory Summary")
