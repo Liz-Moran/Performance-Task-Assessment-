@@ -31,7 +31,7 @@ while True:
         continue   #Sends the user back to the beginning of the loop
         
     #Asks the user what the money was for
-    category= input("What is this/was money for?: ")
+    category= input("What is this money for?: ")
     add_transaction(amount, category)
 
     # Calculates the running total balance
@@ -39,7 +39,7 @@ while True:
     for t in transactions:    #Iteration that loops through the list
         total +=t[0]
 
-    #Shows the user the updated balance and the category the just entered 
+    #Shows the user the updated balance and the category they just entered 
     print("Current balance: $", total, "(Category:", category + ")")
     print("--------------------------")
 
