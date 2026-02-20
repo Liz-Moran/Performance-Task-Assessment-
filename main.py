@@ -7,6 +7,7 @@ transactions=[]  #This list stores every transaction as [amount, category]
 
 def add_transaction(amount, category):
     transactions.append([amount, category])
+    print(f"Added expense for: {category}")
 
     if amount < 0:
         print("Expenses added.")
@@ -47,8 +48,7 @@ while True:
 category_totals = {}
 for amount, category in transactions:
     #Adds the amount to the correct category total
-    category_totals[category] = category_totals.get(category, 0)
-+ amount
+    category_totals[category] = category_totals.get(category, 0) + amount
 
 #Prints the category summary for the user
 print("\nCategory Summary")
