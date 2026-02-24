@@ -1,56 +1,61 @@
-#Purpose: To help the user manage their money by tracking income and expenses
-transactions=[]  #This list stores every transaction as [amount, category]
+#Purpose: This program helps the user keep track of their money by storying transactions and showing their balence and totals for a category they choose to spend their money one.  
+transactions=[]  #This list stores every transaction as [amount, category] 
 
 #Student-developed procedure:
-#This procedure takes an amount and a category and adds them to the transactions list.
-#It then prints whether the user entered income or an expense.
+#Function I made to add a transaction to the list. It uses parameters (amount and category) and prints out user inputs.
 
 def add_transaction(amount, category):
-    transactions.append([amount, category])
-    print(f"Added expense for: {category}")
-
-    if amount < 0:
-        print("Expenses added.")
+    transactions.append([amount, category]) # This stores the data (sequencing)
+    #This checks if the amount entered is negative or postive (selection)
+    if amount < 0: 
+        print("Balence updated (expense added).")
     else:
-        print("Income added.")
-# Intro messages to guide the user through the procedure
-print("Mini Manager")
-print("=============")
-print("Welcome to Mini Manager!")
-print("Where you can easily track your income and expenses!")
-print("Type 'stop' to stop entering your income and expenses.\n")
+        print("Balence added.")
 
-#Main loop that keeps asking users for transactions while they type "stop" to end it.
+
+# Intro messages for a better user experience
+print("Mini Money Manager")
+print("==================")
+print("Welcome to Mini Money Manager, where you can track your money.")
+print("Enter postive numbers to add to your balence and negative numbers for expenses.")
+print("Type 'stop' when done.\n")
+
+#Main loop that keeps running while asking users for transactions until they type "stop" to end it.
 while True:   
-    user_input = input("Enter amount (positive for income, negative for expenses) : ")
-    if user_input.lower()=="stop": #Condition to exit loop
+    user_input = input("Enter amount: ")
+
+    if user_input.lower()=="stop": #Condition to exit loop once user wants to stop entering transactions
         break
-    try:        #Validates that the input is a number                              s 
+
+
+    try:        #Try to convert the input into a number 
         amount = float(user_input)
     except:
         print("Not a number. Please try again.")
         continue   #Sends the user back to the beginning of the loop
         
     #Asks the user what the money was for
-    category= input("Where did this money come from? or What was this money for?: ")
+    category= input("What is this money for?: ")
     add_transaction(amount, category)
 
-    # Calculates the running total balance
+    # Calculates the running total balance (iteration)
     total = 0
-    for t in transactions:    #Iteration that loops through the list
+    for t in transactions:    #Loop through the list
         total +=t[0]
 
-    #Shows the user the updated balance and the category the just entered 
-    print("Current balance: $", total, "(Category:", category + ")")
+    #Shows the user the updated balance
+    print("Current balance: $", total)
     print("--------------------------")
 
 #After the user is done, the following section creates a summary of totals by category
 category_totals = {}
+
+#Loops through all the transactions entered and add up amounts by category 
 for amount, category in transactions:
     #Adds the amount to the correct category total
     category_totals[category] = category_totals.get(category, 0) + amount
 
-#Prints the category summary for the user
+#Prints the category summary 
 print("\nCategory Summary")
 print("----------------")
 for category, total in category_totals.items():
