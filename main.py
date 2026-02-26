@@ -1,4 +1,4 @@
-#Purpose: This program helps the user keep track of their money by storying transactions and showing their balence and totals for a category they choose to spend their money one.  
+#Purpose: This program helps the user keep track of their money by storing transactions and showing their balance and totals for a category they choose to spend their money on.  
 transactions=[]  #This list stores every transaction as [amount, category] 
 
 #Student-developed procedure:
@@ -6,7 +6,7 @@ transactions=[]  #This list stores every transaction as [amount, category]
 
 def add_transaction(amount, category):
     transactions.append([amount, category]) # This stores the data (sequencing)
-    #This checks if the amount entered is negative or postive (selection)
+    #This checks if the amount entered is negative or positive (selection)
     if amount < 0: 
         print("Balence updated (expense added).")
     else:
@@ -60,3 +60,5 @@ print("\nCategory Summary")
 print("----------------")
 for category, total in category_totals.items():
     print(f"{category}: ${total}")
+
+    
