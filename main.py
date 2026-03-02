@@ -60,5 +60,3 @@ print("\nCategory Summary")
 print("----------------")
 for category, total in category_totals.items():
     print(f"{category}: ${total}")
-
-    
